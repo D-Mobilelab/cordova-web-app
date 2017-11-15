@@ -10,7 +10,9 @@
     <content src="start.html" />
     <access origin="*" />
     <access origin="http://localhost:8080/*" />
+    <access origin="http://10.57.12.15:8080/*" />
     <allow-navigation href="http://localhost:8080/*" />
+    <allow-navigation href="http://10.57.12.15:8080/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

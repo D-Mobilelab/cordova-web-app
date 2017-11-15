@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.Title-message {
+    font-size: 25px;
+    background: black;
+    color: white;
+    text-align: center;
+}

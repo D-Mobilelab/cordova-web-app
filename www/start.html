@@ -76,7 +76,14 @@
     	} else {
     		alert('CorHttpd plugin not available/ready.');
     	}
-    }
+	}
+
+	function goToDev(){
+		var ip = document.querySelector('#ip');
+		console.log("go to ip", ip);
+		window.location.href = ip.value;
+	}
+
     </script>
     <div id="fullpage">
     <p>Demo for CorHttpd Plugin</p>    
@@ -84,6 +91,8 @@
     <p><button onclick="stopServer();">Stop Httpd</button></p>
 	<p><button onclick="updateStatus();">Check Status</button></p>
 	<p><button onclick="window.location.href = 'http://localhost:8080/index.html'">Go to localhost</button></p>
+	<p><input id="ip" type="text" placeholder="Add your ip like this: http://10.57.12.15:8080/"/></p>
+	<p><button onclick="goToDev()">Go to dev server page.</button></p>
     <div id='location'></div>
     <div id='url'></div>
     <div id='localpath'></div>
