@@ -1,30 +1,15 @@
-import './css/index.css';
+import App from './App';
+import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 
-class App {
-    constructor(message='default message'){
-        this.body = document.querySelector('body');
-        this.h1Tag = document.createElement('h1');
-        this.h1Tag.className = 'Title-message';   
-        this.body.appendChild(this.h1Tag);
-        this.getInfo()
-            .then(data => {
-                this.message = `Your ip is ${data.origin}`;
-                this.render();
-            });
-    }
-
-    async getInfo() {
-        try {
-            const data = await fetch('http://httpbin.org/ip').then(response => response.json());
-            return data;
-        } catch(e) {
-            console.warn(e);
-        }        
-    }
-
-    render() {
-        this.h1Tag.innerText = this.message;
+function startApp(){ 
+    new App("Up and running").render();
+    if ('serviceWorker' in navigator) {
+        const registration = runtime.register();
     }
 }
 
-new App("Up and running").render()
+if (APP_ENV === 'hybrid') {
+    document.addEventListener('deviceready', startApp);
+} else {
+    startApp();    
+}
