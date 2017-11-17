@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <! [endif]-->
   <% if (htmlWebpackPlugin.options.APP_ENV === 'hybrid') {%>
+    <meta http-equiv="Content-Security-Policy" content="default-src https://codepush.azurewebsites.net 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *" />
     <script type="text/javascript" src='cordova.js'></script>
   <% } %>
 </head>
