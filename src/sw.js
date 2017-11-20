@@ -79,7 +79,7 @@ self.addEventListener('fetch', event => {
     // Network(cache it), falling back to cache
     const promise = fetch(request)
         .then((response) => {
-            return caches.open(CACHE_NAME)
+            return global.caches.open(CACHE_NAME)
             .then(function(cache) {
                 // put it into the cache
                 cache.put(request, response.clone());
