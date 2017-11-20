@@ -4,11 +4,27 @@
 }
 
 .Title-message {
-    font-size: 25px;
+    font-size: 1.5em;
     background: black;
     color: white;
     text-align: center;
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+.Connection-state{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    font-size: 1.5em;
+}
+
+.Connection-state.online {
+    background: green;
+}
+
+.Connection-state.offline {
+    background: red;
 }
