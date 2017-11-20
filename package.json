@@ -1,4 +1,5 @@
 {
+  "homepage": "https://d-mobilelab.github.io/cordova-web-app/",
   "name": "org.apache.cordova.sampleapp",
   "displayName": "sample-app",
   "version": "1.0.0",
@@ -10,7 +11,8 @@
     "build": "webpack --env.APP_ENV=web --config webpack.prod.js",
     "build:dev": "webpack --env.APP_ENV=web --config webpack.dev.js",
     "build:dev:hybrid": "webpack --env.APP_ENV=hybrid --config webpack.dev.js",
-    "build:hybrid": "webpack --env.APP_ENV=hybrid --config webpack.prod.js"
+    "build:hybrid": "webpack --env.APP_ENV=hybrid --config webpack.prod.js",
+    "deploy":"npm run build && gh-pages -d dist"
   },
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
