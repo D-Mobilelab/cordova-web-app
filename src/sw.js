@@ -41,11 +41,11 @@ self.addEventListener('activate', event => {
         global.caches.keys().then(cacheNames => {
             return Promise.all(
                     cacheNames.map(cacheName => {
-                    // Delete the caches that are not the current one.
-                    if (cacheName.indexOf(CACHE_NAME) === 0) {
-                        return null
-                    }
-                    return global.caches.delete(cacheName)
+                    // Delete the old caches
+                    if (cacheName.indexOf(CACHE_NAME) === -1) {
+                        console.log(`[SW] clear ${cacheName}`);
+                        return global.caches.delete(cacheName)
+                    }                    
                 })
             )
         })
