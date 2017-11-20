@@ -2,7 +2,7 @@ const CACHE_NAME = 'cache_' + new Date().toISOString();
 const { assets } = global.serviceWorkerOption
 const DEBUG = true;
 
-let assetsToCache = [...assets, './'];
+let assetsToCache = [...assets, './', '/?utm_source=homescreen'];
 
 // When the service worker is first added to a computer.
 self.addEventListener('install', event => {

@@ -5,9 +5,11 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const LOCAL_JSON = require('./local.js');
 
-const HYBRID_FOLDER = './www';
 module.exports = function(env){
+  const HYBRID_FOLDER = './www';
   let outputPath = './dist';
   if(env.APP_ENV === 'hybrid') {
     console.log('Hybrid build');
@@ -32,13 +34,32 @@ module.exports = function(env){
       // pass this in the global scope
       new webpack.DefinePlugin({
         __ENV__: JSON.stringify('production'),
-        APP_ENV: JSON.stringify(env.APP_ENV)        
+        APP_ENV: JSON.stringify(env.APP_ENV),
+        LOCAL_JSON: JSON.stringify(LOCAL_JSON)
       }),      
       new ServiceWorkerWebpackPlugin({
         entry: path.join(__dirname, 'src/sw.js'),
       }),
       new UglifyJSPlugin({
         sourceMap: true
+      }),
+      new WebpackPwaManifest({
+        name: 'My Progressive Web App',
+        short_name: 'MyPWA',
+        display: 'standalone',
+        description: 'My awesome Progressive Web App!',
+        background_color: '#ffffff',
+        start_url: '/?utm_source=homescreen',
+        icons: [
+          {
+            src: path.resolve('src/assets/icon.png'),
+            sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+          },
+          {
+            src: path.resolve('src/assets/icon.png'),
+            size: '1024x1024' // you can also use the specifications pattern
+          }
+        ]
       })
     ]
   })

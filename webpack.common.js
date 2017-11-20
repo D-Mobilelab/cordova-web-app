@@ -6,7 +6,7 @@ const PUBLIC_PATH = 'https://www.my-project-name.com/';  // webpack needs the tr
 module.exports = {
   entry: {    
     app: './src/index.js',
-    vendor: ['babel-polyfill', 'whatwg-fetch']    
+    vendor: ['babel-polyfill', 'whatwg-fetch', 'url-search-params']    
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

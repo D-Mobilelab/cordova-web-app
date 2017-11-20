@@ -1,15 +1,22 @@
-import App from './App';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+import App from './App';
+import fetchConfig from './fetcher';
 
-function startApp(){ 
-    new App("Up and running").render();
+function startApp() {
+    // fetchConfig();
+    const myApp = new App('Up and running');
+    myApp.render();
+
     if ('serviceWorker' in navigator) {
-        const registration = runtime.register();
+        if(__ENV__ !== 'development') { 
+            const registration = runtime.register();
+        }
+        // registration.unregister()<Promise>
     }
 }
 
 if (APP_ENV === 'hybrid') {
     document.addEventListener('deviceready', startApp);
 } else {
-    startApp();    
+    startApp();
 }

@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const PLATFORM_ANDROID = './platforms/android/assets/www';
 const PLATFORM_IOS = './platforms/ios/www';
+const LOCAL_JSON = require('./local.dev.js');
 
  module.exports = function(env) {
   let contentBase = './dist';  
@@ -34,8 +35,9 @@ const PLATFORM_IOS = './platforms/ios/www';
         }
       }),
       // pass this in the global scope
-      new webpack.DefinePlugin({
+      new webpack.DefinePlugin({        
         __ENV__: JSON.stringify('development'),
+        LOCAL_JSON: JSON.stringify(LOCAL_JSON),
         APP_ENV: JSON.stringify(env.APP_ENV),
       }),    
       new ServiceWorkerWebpackPlugin({
