@@ -32,7 +32,7 @@ export default class App {
 
     async getInfo() {
         try {
-            const data = await fetch('http://httpbin.org/ip').then(response => response.json());
+            const data = await fetch('//httpbin.org/ip').then(response => response.json());
             this.message = `Your ip is ${data.origin} runnning: ${__ENV__} ${APP_ENV}`;
             this.render();
             return data;
