@@ -1,8 +1,6 @@
 module.exports = {
     "settings": {
-        "domain": "http://www.bandainamcoent.fun",
-        "country": "ww-it",
-        "secret": "123456789"
+        "public_path": "//d-mobilelab.github.io/cordova-web-app/",
     },    
     "config": {
 

@@ -9,16 +9,20 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const LOCAL_JSON = require('./local.js');
 
 module.exports = function(env){
+  let PUBLIC_PATH = LOCAL_JSON.settings.public_path;
   const HYBRID_FOLDER = './www';
   let outputPath = './dist';
+  // hybrid served from www
   if(env.APP_ENV === 'hybrid') {
     console.log('Hybrid build');
-    outputPath = HYBRID_FOLDER;    
+    outputPath = HYBRID_FOLDER;
+    PUBLIC_PATH = '/';    
   }
   return merge(common, {
     output: {
       path: path.resolve(__dirname, outputPath),
-      filename: '[name].[hash:5].bundle.js'
+      filename: '[name].[hash:5].bundle.js',
+      publicPath: PUBLIC_PATH
     },
     devtool: 'source-map',
     plugins: [
@@ -56,7 +60,7 @@ module.exports = function(env){
         display: 'standalone',
         description: 'My awesome Progressive Web App!',
         background_color: '#ffffff',
-        start_url: '/?utm_source=homescreen',
+        start_url: 'index.html?utm_source=homescreen',
         icons: [
           {
             src: path.resolve('src/assets/icon.png'),

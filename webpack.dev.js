@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const common = require('./webpack.common.js');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const PLATFORM_ANDROID = './platforms/android/assets/www';
 const PLATFORM_IOS = './platforms/ios/www';
 const LOCAL_JSON = require('./local.dev.js');
@@ -39,17 +38,7 @@ const LOCAL_JSON = require('./local.dev.js');
         __ENV__: JSON.stringify('development'),
         LOCAL_JSON: JSON.stringify(LOCAL_JSON),
         APP_ENV: JSON.stringify(env.APP_ENV),
-      }),
-      new SWPrecacheWebpackPlugin(
-        {
-          cacheId: 'sample-app',
-          dontCacheBustUrlsMatching: /\.\w{8}\./,
-          filename: 'sw.js',
-          minify: false,
-          navigateFallback: 'index.html',
-          staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-        }
-      ),
+      })
     ]
   });
  }

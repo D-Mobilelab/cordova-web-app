@@ -7,18 +7,17 @@
     font-size: 1.5em;
     background: black;
     color: white;
-    text-align: center;
-    position: fixed;
+    text-align: center;    
     top: 0;
     width: 100%;
 }
 
 .Connection-state{
-    position: fixed;
     bottom: 0;
     width: 100%;
     color: white;
     font-size: 1.5em;
+    position: fixed;
 }
 
 .Connection-state.online {
@@ -27,4 +26,8 @@
 
 .Connection-state.offline {
     background: red;
+}
+
+.Article-container {
+    padding: 1em;
 }
