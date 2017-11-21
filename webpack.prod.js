@@ -4,7 +4,7 @@ const common = require('./webpack.common.js');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const LOCAL_JSON = require('./local.js');
 
@@ -37,9 +37,16 @@ module.exports = function(env){
         APP_ENV: JSON.stringify(env.APP_ENV),
         LOCAL_JSON: JSON.stringify(LOCAL_JSON)
       }),      
-      new ServiceWorkerWebpackPlugin({
-        entry: path.join(__dirname, 'src/sw.js'),
-      }),
+      new SWPrecacheWebpackPlugin(
+        {
+          cacheId: 'sample-app',
+          dontCacheBustUrlsMatching: /\.\w{8}\./,
+          filename: 'sw.js',
+          minify: false,
+          navigateFallback: 'index.html',
+          staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+        }
+      ),
       new UglifyJSPlugin({
         sourceMap: true
       }),
@@ -49,7 +56,7 @@ module.exports = function(env){
         display: 'standalone',
         description: 'My awesome Progressive Web App!',
         background_color: '#ffffff',
-        start_url: '/?utm_source=homescreen',
+        start_url: '?utm_source=homescreen',
         icons: [
           {
             src: path.resolve('src/assets/icon.png'),
