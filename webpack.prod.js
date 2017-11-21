@@ -56,7 +56,7 @@ module.exports = function(env){
         display: 'standalone',
         description: 'My awesome Progressive Web App!',
         background_color: '#ffffff',
-        start_url: '?utm_source=homescreen',
+        start_url: '/?utm_source=homescreen',
         icons: [
           {
             src: path.resolve('src/assets/icon.png'),
