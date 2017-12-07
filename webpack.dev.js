@@ -5,7 +5,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PLATFORM_ANDROID = './platforms/android/assets/www';
 const PLATFORM_IOS = './platforms/ios/www';
-const LOCAL_JSON = require('./local.dev.js');
 
  module.exports = function(env) {
   let contentBase = './dist';  
@@ -35,8 +34,7 @@ const LOCAL_JSON = require('./local.dev.js');
       }),
       // pass this in the global scope
       new webpack.DefinePlugin({        
-        __ENV__: JSON.stringify('development'),
-        LOCAL_JSON: JSON.stringify(LOCAL_JSON),
+        __ENV__: JSON.stringify('development'),        
         APP_ENV: JSON.stringify(env.APP_ENV),
       })
     ]

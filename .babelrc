@@ -6,6 +6,7 @@
         },
         "modules": false,
         "debug": true
-      }]
+      }],
+      "react"
     ]
   }

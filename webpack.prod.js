@@ -1,15 +1,16 @@
+const workboxPlugin = require('workbox-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const common = require('./webpack.common.js');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
-const LOCAL_JSON = require('./local.js');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const common = require('./webpack.common.js');
+//const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 module.exports = function(env){
-  let PUBLIC_PATH = LOCAL_JSON.settings.public_path;
+  let PUBLIC_PATH = '/';
   const HYBRID_FOLDER = './www';
   let outputPath = './dist';
   // hybrid served from www
@@ -39,26 +40,21 @@ module.exports = function(env){
       new webpack.DefinePlugin({
         __ENV__: JSON.stringify('production'),
         APP_ENV: JSON.stringify(env.APP_ENV),
-        LOCAL_JSON: JSON.stringify(LOCAL_JSON)
-      }),      
-      new SWPrecacheWebpackPlugin(
-        {
-          cacheId: 'sample-app',
-          dontCacheBustUrlsMatching: /\.\w{8}\./,
-          filename: 'sw.js',
-          minify: false,
-          navigateFallback: 'index.html',
-          staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
-        }
-      ),
+      }),
+      new workboxPlugin({
+        globDirectory: outputPath,
+        globPatterns: ['**/*.{html,js,png}'],
+        swSrc: './src/sw.js',
+        swDest: path.join(outputPath, 'sw.js')        
+      }),
       new UglifyJSPlugin({
         sourceMap: true
       }),
       new WebpackPwaManifest({
-        name: 'My Progressive Web App',
-        short_name: 'MyPWA',
+        name: 'PWA Test',
+        short_name: 'PWA Test',
         display: 'standalone',
-        description: 'My awesome Progressive Web App!',
+        description: 'PWA Test',
         background_color: '#ffffff',
         start_url: 'index.html?utm_source=homescreen',
         icons: [
@@ -71,7 +67,11 @@ module.exports = function(env){
             size: '1024x1024' // you can also use the specifications pattern
           }
         ]
-      })
+      }),
+      new CopyWebpackPlugin([
+        { from:'node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1.2.js', to: path.resolve(__dirname, outputPath) },
+        { from:'node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1.2.js.map', to: path.resolve(__dirname, outputPath) }
+      ])
     ]
   })
 }

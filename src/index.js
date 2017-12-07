@@ -1,29 +1,22 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
-import fetchConfig from './fetcher';
+import registerSW from './registerServiceWorker';
 
 function startApp() {
-    // fetchConfig();
-    const myApp = new App('Up and running');
-    myApp.render();
-
-    if ('serviceWorker' in navigator) {
-        if(__ENV__ !== 'development') { 
-            const registration = navigator.serviceWorker.register('sw.js')
-                .then(function(reg) {
-                    // registration worked
-                    console.log('Registration succeeded. Scope is ' + reg.scope);
-                    return reg;
-                }).catch(function(error) {
-                    // registration failed
-                    console.log('Registration failed with ' + error);
-                });
-        }
-        // registration.unregister()<Promise>
-    }
+    ReactDOM.render(<App />, document.getElementById('root'));
+    registerSW();
 }
+
+if (module.hot) {
+    module.hot.accept('./App.js', () => {
+      // Require the new version and render it    
+      ReactDOM.render(<App locale='en-US' />, document.getElementById('root'));
+    });
+  }
 
 if (APP_ENV === 'hybrid') {
     document.addEventListener('deviceready', startApp);
 } else {
-    startApp();
+    document.addEventListener('DOMContentLoaded', startApp);
 }
