@@ -1,5 +1,5 @@
 // TODO: Replace Xs.
-importScripts('workbox-sw.prod.workbox-sw.prod.v2.1.2.js');
+importScripts('workbox-sw.prod.v2.1.2.js');
 
 // Note: Ignore the error that Glitch raises about WorkboxSW being undefined.
 const workbox = new WorkboxSW({
@@ -8,11 +8,12 @@ const workbox = new WorkboxSW({
 });
 
 workbox.router.registerRoute(
-  new RegExp('^https://unpkg.com/onsenui/css/'),
+  new RegExp('^https://unpkg.com/onsenui/css/*'),
   workbox.strategies.cacheFirst()
 );
 
-workbox.routing.registerRoute(
+console.log(workbox);
+workbox.router.registerRoute(
   /\.(?:png|gif|jpg|jpeg|svg)$/,
   workbox.strategies.cacheFirst({
     cacheName: 'images',
