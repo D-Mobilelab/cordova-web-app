@@ -17,7 +17,7 @@ module.exports = function(env){
   if(env.APP_ENV === 'hybrid') {
     console.log('Hybrid build');
     outputPath = HYBRID_FOLDER;
-    PUBLIC_PATH = '/';    
+    PUBLIC_PATH = '';
   }
   return merge(common, {
     output: {
