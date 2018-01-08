@@ -40,7 +40,6 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-httpd": {},
       "cordova-plugin-network-information": {},
       "cordova-plugin-file": {},
       "cordova-plugin-code-push": {}
