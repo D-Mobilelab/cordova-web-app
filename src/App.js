@@ -17,23 +17,25 @@ import {
 import * as api from './api/api.js';
 
 export default class App extends Component {
-    constructor(){
+    constructor() {
         super(...arguments);
         this.renderRow = this.renderRow.bind(this);
         this.state = {
+            isFetching: false,
             articles: []
         }
     }
     
     async componentDidMount() {
+        this.setState({ isFetching: true });
         const articles = await api.getArticles();
-        this.setState({ articles });
+        this.setState({ isFetching: false, articles });        
     }
 
     renderToolbar() {
         return (
             <Toolbar>
-                <div className='center'>Example app</div>
+                <div className='center'>Example app Test</div>
             </Toolbar>
         );
     }

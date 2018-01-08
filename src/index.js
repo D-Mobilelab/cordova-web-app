@@ -13,7 +13,7 @@ function startApp() {
 if (module.hot) {
     module.hot.accept('./App.js', () => {
       // Require the new version and render it    
-      ReactDOM.render(<App locale='en-US' />, document.getElementById('root'));
+      ReactDOM.render(<App />, document.getElementById('root'));
     });
   }
 
