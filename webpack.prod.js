@@ -43,7 +43,7 @@ module.exports = function(env){
       }),
       new workboxPlugin({
         globDirectory: outputPath,
-        globPatterns: ['**/*.{html,js,png}'],
+        globPatterns: ['**/*.{html,js,png,eot,ttf,woff,woff2,svg}'],
         swSrc: './src/sw.js',
         swDest: path.join(outputPath, 'sw.js')        
       }),
