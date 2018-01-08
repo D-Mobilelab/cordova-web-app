@@ -7,25 +7,6 @@ const workbox = new WorkboxSW({
   clientsClaim: true
 });
 
-workbox.router.registerRoute(
-  new RegExp('^https://unpkg.com/onsenui/css/*'),
-  workbox.strategies.cacheFirst()
-);
-
-console.log(workbox);
-workbox.router.registerRoute(
-  /\.(?:png|gif|jpg|jpeg|svg)$/,
-  workbox.strategies.cacheFirst({
-    cacheName: 'images',
-    plugins: [
-      new workbox.expiration.Plugin({
-        maxEntries: 60,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-      }),
-    ],
-  }),
-);
-
 self.addEventListener('push', (event) => {
   const title = 'Get Started With Workbox For Webpack';
   const options = {
@@ -33,6 +14,5 @@ self.addEventListener('push', (event) => {
   };
   event.waitUntil(self.registration.showNotification(title, options));
 });
-
 
 workbox.precache([]);

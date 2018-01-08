@@ -27,8 +27,7 @@ module.exports = {
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]},
       {
-        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        exclude: /node_modules/,        
+        test: /\.(png|jpe?g|gif|svg|woff|woff(2)?|ttf|eot|ico)(\?[a-z0-9=&.]+)?$/,// /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/        
         use: [
           {
             loader: 'file-loader',

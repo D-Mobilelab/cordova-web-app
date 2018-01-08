@@ -6,15 +6,26 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
   <title><%= htmlWebpackPlugin.options.title %></title>
   <meta name="description" content="Description">
-  <meta name="author" content="Pasquale Mangialavori">
-  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
-  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  <meta name="author" content="Pasquale Mangialavori">  
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <! [endif]-->
   <% if (htmlWebpackPlugin.options.APP_ENV === 'hybrid') {%>
-    <meta http-equiv="Content-Security-Policy" content="default-src https://codepush.azurewebsites.net * data: gap: ws: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *;" />
+    <meta http-equiv="Content-Security-Policy" content="default-src https://codepush.azurewebsites.net * data: gap: ws: https://ssl.gstatic.com 'unsafe-eval'; style-src * 'unsafe-inline'; media-src *;" />
     <script type="text/javascript" src='cordova.js'></script>
+    <style>
+      html, body {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+    </style>
   <% } %>
 </head>
 <body>
