@@ -7,15 +7,13 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <content src="start.html" />
+    <content src="http://10.57.12.14:8080/index.html" />
     <access origin="*" />
     <access origin="https://codepush.azurewebsites.net" />
     <access origin="https://codepush.blob.core.windows.net" />
     <access origin="https://codepushupdates.azureedge.net" />
-    <access origin="http://localhost:8080/*" />
-    <access origin="http://10.57.12.15:8080/*" />
-    <allow-navigation href="http://localhost:8080/*" />
-    <allow-navigation href="http://10.57.12.15:8080/*" />
+    <access origin="http://10.57.12.14:8080/*" />
+    <allow-navigation href="http://10.57.12.14:8080/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
