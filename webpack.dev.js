@@ -20,6 +20,7 @@ const PLATFORM_IOS = './platforms/ios/www';
     devtool: 'inline-source-map',
     devServer: {
       contentBase: contentBase,
+      historyApiFallback: true,
       host: '0.0.0.0' // needed to be served from your ip
     },
     plugins: [
