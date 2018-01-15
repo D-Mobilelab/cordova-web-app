@@ -26,6 +26,7 @@ module.exports = {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ]},
+      { test: /\.scss$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ]},
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff(2)?|ttf|eot|ico)(\?[a-z0-9=&.]+)?$/,// /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/        
         use: [
