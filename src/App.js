@@ -41,7 +41,7 @@ export default class App extends Component {
     }
 
     renderRow(row) {
-        return (<ListItem key={row} tappable>
+        return (<ListItem key={row.id} tappable>
             {row.title}
         </ListItem>);
     }
