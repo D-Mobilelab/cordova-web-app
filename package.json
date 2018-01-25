@@ -8,6 +8,7 @@
   "scripts": {
     "start": "webpack-dev-server --env.APP_ENV=web --open --config webpack.dev.js",
     "start:hybrid": "webpack-dev-server --env.APP_ENV=hybrid --env.PLATFORM=android --config webpack.dev.js",
+    "start:ios": "webpack-dev-server --env.APP_ENV=hybrid --env.PLATFORM=ios --config webpack.dev.js",
     "build": "webpack --env.APP_ENV=web --config webpack.prod.js",
     "build:dev": "webpack --env.APP_ENV=web --config webpack.dev.js",
     "build:dev:hybrid": "webpack --env.APP_ENV=hybrid --config webpack.dev.js",
