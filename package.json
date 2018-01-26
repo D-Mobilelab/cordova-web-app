@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.APP_ENV=web --open --config webpack.dev.js",
-    "start:hybrid": "webpack-dev-server --env.APP_ENV=hybrid --env.PLATFORM=android --config webpack.dev.js",
+    "start:android": "webpack-dev-server --env.APP_ENV=hybrid --env.PLATFORM=android --config webpack.dev.js",
     "start:ios": "webpack-dev-server --env.APP_ENV=hybrid --env.PLATFORM=ios --config webpack.dev.js",
     "build": "webpack --env.APP_ENV=web --config webpack.prod.js",
     "build:dev": "webpack --env.APP_ENV=web --config webpack.dev.js",
@@ -19,10 +19,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "code-push": "^2.0.1-beta",
     "cordova-android": "^6.3.0",
     "cordova-ios": "^4.5.3",
-    "cordova-plugin-code-push": "^1.10.0-beta",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-dialogs": "^1.3.4",
     "cordova-plugin-file": "^5.0.0",
@@ -35,7 +33,8 @@
     "react-router-dom": "^4.2.2",
     "url-search-params": "^0.10.0",
     "whatwg-fetch": "^2.0.3",
-    "workbox-webpack-plugin": "^2.1.2"
+    "workbox-webpack-plugin": "^2.1.2",
+    "cordova-plugin-code-push": "~1.10.0-beta"
   },
   "cordova": {
     "plugins": {
